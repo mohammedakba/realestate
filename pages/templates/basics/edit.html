@@ -1,0 +1,90 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}{% endblock %}
+
+{%block body%}
+
+<style>
+    body {
+        background: none;
+        font-family: sans-serif;
+        margin: 0;
+        padding: 0;
+        background-position: center;
+    }
+
+    .loginbox {
+        width: 350px;
+        height: 650px;
+        color: black;
+        top: 50%;
+        left: 50%;
+        position: left;
+        margin-left: 10%;
+        box-sizing: border-box;
+        padding: 70px 30px;
+        border-radius: 20px;
+
+    }
+
+    .loginbox h1 {
+        margin: 0;
+        padding: 0 0 20px;
+        text-align: center;
+        color: rgb(8, 8, 8);
+        font-size: 26px;
+        font-weight: bold;
+        margin-top: 2%;
+    }
+
+    .loginbox input[type="email"],
+    input[type="text"],
+    input[type="password"] {
+        border: 2px solid black;
+        background: none;
+        outline: none;
+        height: 40px;
+        color: black;
+        font-size: 14px;
+        border-radius: 5px;
+        width: 300px;
+        text-align: center;
+        margin-top: 1%;
+    }
+
+    .loginbox select {
+        border: 2px solid black;
+        border-radius: 5px;
+        outline: none;
+        width: 200px;
+        height: 30px;
+
+    }
+
+    .loginbox textarea {
+        border: 2px solid black;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .loginbox image {
+        border: 2px solid black;
+        width: 100px;
+    }
+
+    .loginbox button {
+        margin-top: 2%;
+    }
+</style>
+
+
+<div class="loginbox">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        {{form.as_p}}
+
+        <input type="hidden" name="editedid" value="{{id.id}}">
+        <button type="submit" class="btn btn-outline-success"> Submit Changes </button>
+    </form>
+</div>
+{% endblock %}

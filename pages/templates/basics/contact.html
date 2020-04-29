@@ -1,0 +1,101 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}contact us {% endblock %}
+
+{%block body%}
+
+<!-- Page Content -->
+<div class="container" style="margin-top:8%">
+
+    <!-- Content Row -->
+    <div class="row" style="margin-left:5%">
+        <div class="col-lg-8 mb-4">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15282245.44596868!2d73.72133191485172!3d20.75010688625529!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1580887106859!5m2!1sen!2sin"
+                width="650" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4">
+            <h3>Contact Details</h3>
+            <p>
+                3481 Melrose Place
+                <br>Beverly Hills, CA 90210
+                <br>
+            </p>
+            <p>
+                <abbr>Phone_No</abbr>: (123) 456-7890
+            </p>
+            <p>
+                <abbr>Email</abbr>:
+                <a href="mailto:realestate@gamil.com">realestate@gamil.com
+                </a>
+            </p>
+            <!-- <p> -->
+            <abbr>Active_Hours</abbr>: Monday - saturday
+            9:00 AM to 5:00 PM
+            <!-- </p> -->
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+
+
+
+
+
+
+    <!-- Contact Form -->
+    <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+
+    <form name="sentMessage" id="contactForm" action="" method="POST" novalidate>
+        {%csrf_token%}
+        <div class="row" style="margin-top: 5%;">
+            <div class="col-lg-4 mb-4">
+                <h3>Send us a Message</h3>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>User Name:</label>
+                        <input type="text" class="form-control" id="name" required
+                            data-validation-required-message="Please enter your name." name="username">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Phone Number:</label>
+                        <input type="tel" class="form-control" id="phone" required
+                            data-validation-required-message="Please enter your phone number." name="phnumber">
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Email Address:</label>
+                        <input type="email" class="form-control" id="email" required
+                            data-validation-required-message="Please enter your email address." name="email">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="control-group form-group" style="margin-top: 10;">
+                    <div class="controls">
+                        <label>Message:</label>
+                        <textarea rows="10" cols="100" class="form-control" id="message" name="message" required
+                            data-validation-required-message="Please enter your message" maxlength="999"
+                            style="resize:none"></textarea>
+                    </div>
+                </div>
+
+                <div id="success">
+                    <!-- For success/fail messages -->
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+{% endblock %}

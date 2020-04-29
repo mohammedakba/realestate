@@ -1,0 +1,89 @@
+{% extends 'basics/base.html' %}
+
+{%block title%}REAL ESTATE {%endblock%}
+{%block body%}
+{%load static%}
+<br><br>
+
+
+<div class="container mt-5">
+    <div class="row">
+
+        {% for property in properties%}
+        <div class="column">
+            <div class="card h-100">
+                <form action="">
+                    <input type="hidden" name="id" value="{{property.id}}">
+                    <button formaction="pview" formmethod="GET" type="submit"><img class="card-img-top"
+                            src="/media/{{property.image}}" alt=""></button>
+
+                </form>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <p class="card-text">For {{property.property_type}}</p>
+                    </h4>
+                    <p class="card-text">{{property.project_name}}</p>
+                    <p class="card-text">{{property.description}}</p>
+                    <p class="card-text">price Rs:{{property.price}}</p>
+                    <form action="pview" method="GET">
+                        <input type="hidden" name="id" value="{{property.id}}">
+                        <button type="submit" class="btn btn-outline-primary"> veiw details </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+<!-- <div class="container mt-5">
+    <div class="row">
+
+        {% for property in properties%}
+        <div class="column">
+            <div class="card h-100">
+                <form action="pview" method="GET">
+                    {%csrf_token%}
+                    <input type="hidden" name="id" value="{{property.id}}">
+                    <a href="pview"><img class="card-img-top" src="/media/{{property.image}}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <p class="card-text">For {{property.property_type}}</p>
+                        </h4>
+                        <p class="card-text">{{property.project_name}}</p>
+                        <p class="card-text">{{property.description}}</p>
+                        <p class="card-text">price Rs:{{property.price}}</p>
+
+
+                        <button type="submit" class="btn btn-outline-primary"> veiw details </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%endblock%}

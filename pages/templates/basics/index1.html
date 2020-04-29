@@ -1,0 +1,97 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}Realestate{% endblock %}
+
+{%block body%}
+
+{%load static%}
+<style>
+    .carousel-item {
+        height: 60vh;
+        min-height: 300px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+
+    }
+</style>
+
+<header style="width: 900px;height:500px;margin-left:20%;margin-top:5%">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active" style="background-image:url('{%static 'indexmain.jpg'%}')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="display-4" style="color: white">houses which you need</h3>
+                    <p class="lead">the best you want</p>
+                </div>
+            </div>
+
+            <div class="carousel-item" style="background-image: url('{%static 'apartmentmain.jpg' %}')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="display-4 color-black" style="color: black;">apartments</h3>
+                    <p class="lead">This is a description for the second slide.</p>
+                </div>
+            </div>
+
+            <div class="carousel-item" style="background-image: url('{%static 'landmain.jpg' %}')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="display-4"> empty land</h3>
+                    <p class="lead">This is a description for the third slide.</p>
+                </div>
+            </div>
+        </div><a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"><span
+                class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a
+            class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"><span
+                class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+    </div>
+</header>
+
+<!-- diffrent properties -->
+
+<div class="container mt-5">
+    <div class="row">
+        {% for property in properties|slice:":3" %}
+        <div class="column">
+            <div class="card h-100">
+                <form action="">
+                    <input type="hidden" name="id" value="{{property.id}}">
+                    <button formaction="pview" formmethod="GET" type="submit"><img class="card-img-top"
+                            src="/media/{{property.image}}" alt=""></button>
+
+                </form>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <p class="card-text">For {{property.property_type}}</p>
+                    </h4>
+                    <p class="card-text">{{property.project_name}}</p>
+                    <p class="card-text">{{property.description}}</p>
+                    <p class="card-text">price Rs:{{property.price}}</p>
+                    <form action="pview" method="GET">
+                        <input type="hidden" name="id" value="{{property.id}}">
+                        <button type="submit" class="btn btn-outline-primary"> veiw details </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<!-- end of properties -->
+
+<br>
+<br>
+<div class="position p-5 m-5 text-dark">
+    <a href="home">
+        <button class="btn btn-outline-dark" type="submit" style="width: 200px;"> view
+            more</button>
+    </a>
+    fcghv vy jvuy j 8 t gy 8t87 68t g8otyt
+</div>
+{% endblock %}

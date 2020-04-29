@@ -1,0 +1,51 @@
+{% extends 'basics/base.html' %}
+
+{% block title %}Realestate{% endblock %}
+
+{%block body%}
+<br><br><br><br><br><br>
+<div class="container">
+    <div class="row">
+
+        {% for property in properties%}
+        <div class="col-lg-6 col-sm-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="/media/{{property.image}}" alt="">
+            </div>
+        </div>
+        <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title">
+                    DETAILS
+                </h4>
+                <p class="card-text">{{property.project_name}}</p>
+                <p class="card-text">Rs : {{property.price}} only</p>
+                <p class="card-text">{{property.description}}</p>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">
+                    CONTACT INFORMATION
+                </h4>
+                <p class="card-text">NAME : {{property.contact_PersonName}}</p>
+                <p class="card-text">Phon no : {{property.contact_Number}}</p>
+                <p class="card-text">email : {{property.contact_email}}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <img class="card-img-top" src="/media/{{property.image1}}" alt=""
+                style="width:550px;height:400px;margin-left:2%;margin-top:2%">
+            <img class="card-img-top" src="/media/{{property.image2}}" alt=""
+                style="width:550px;height:400px;margin-left:2%;margin-top:2%"><br>
+            <img class="card-img-top" src="/media/{{property.image3}}" alt=""
+                style="width:550px;height:400px;margin-left:2%;margin-top:2%">
+            <img class="card-img-top" src="/media/{{property.image4}}" alt=""
+                style="width:550px;height:400px;margin-left:2%;margin-top:2%">
+        </div>
+    </div>
+
+    {%endfor%}
+</div>
+<br>
+<br>
+{% endblock %}

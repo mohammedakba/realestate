@@ -1,0 +1,99 @@
+{% extends 'basics/base.html' %}
+
+{%block title%}REAL ESTATE {%endblock%}
+{%block body%}
+{%load static%}
+<br><br>
+
+<div class="container mt-5">
+    <div class="row">
+
+        {% for property in properties%}
+        <div class="column">
+            <div class="card h-100">
+                <form action="">
+                    <input type="hidden" name="id" value="{{property.id}}">
+                    <button formaction="pview" formmethod="GET" type="submit"><img class="card-img-top"
+                            src="/media/{{property.image}}" alt=""></button>
+
+                </form>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <p class="card-text">For {{property.property_type}}</p>
+                    </h4>
+                    <p class="card-text">{{property.project_name}}</p>
+                    <p class="card-text">{{property.description}}</p>
+                    <p class="card-text">price Rs:{{property.price}}</p>
+                    <form action="pview" method="GET">
+                        <input type="hidden" name="id" value="{{property.id}}">
+                        <button type="submit" class="btn btn-outline-primary"> veiw details </button>
+                        <button type="submit" formaction="edit" formmethod="POST" class="btn btn-outline-primary">
+                            Edit </button>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#exampleModal">Delete </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+<!-- 
+<div class="container mt-5">
+    <div class="row">
+
+        {% for property in properties%}
+        <div class="column">
+            <div class="card h-100">
+                <input type="hidden" name="id" value="{{property.id}}">
+                <a href="pview"><img class="card-img-top" src="/media/{{property.image}}" alt=""></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <p class="card-text">For {{property.property_type}}</p>
+                    </h4>
+                    <p class="card-text">{{property.project_name}}</p>
+                    <p class="card-text">{{property.description}}</p>
+                    <p class="card-text">price Rs:{{property.price}}</p>
+                    <form action="pview" method="GET">
+                        <input type="hidden" name="id" value="{{property.id}}">
+                        <button type="submit" class="btn btn-outline-primary"> veiw details </button>
+                        <button type="submit" formaction="edit" formmethod="POST" class="btn btn-outline-primary">
+                            Edit </button>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#exampleModal">Delete </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div> -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header"> delete wich you want
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% for property in properties%}
+                <form action="">
+                    {%csrf_token%}
+                    <!-- <div class="modal-footer"> -->
+                    <input type="hidden" name="id" value="{{property.id}}">
+                    <p><b>{{property.project_name}}</b></p>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger" formaction="delete" formmethod="POST">Delete</button>
+                    <hr>
+                    <!-- </div> -->
+                </form>
+                {%endfor%}
+            </div>
+
+        </div>
+    </div>
+</div>
+{%endblock%}
